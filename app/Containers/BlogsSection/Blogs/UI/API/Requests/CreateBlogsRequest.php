@@ -35,7 +35,11 @@ class CreateBlogsRequest extends Request
     public function rules(): array
     {
         return [
-            // 'id' => 'required'
+            'hotelName' => 'required|min:3',
+            'description' => 'required|min:5',
+            'price' => 'required',
+            'rating' => 'required',
+            'place' => 'required'
         ];
     }
 

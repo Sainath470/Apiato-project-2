@@ -14,6 +14,7 @@ class CreateBlogsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('admin_id');
             $table->string('hotelName');
+            $table->string('foodName');
             $table->string('description');
             $table->float('price');
             $table->float('rating');

@@ -6,8 +6,11 @@ use App\Ship\Parents\Models\Model;
 
 class Blogs extends Model
 {
-    protected $fillable = [
 
+    protected $table = "blogs";
+
+    protected $fillable = [
+        'admin_id', 'hotelName','description','foodName', 'price','place','rating'
     ];
 
     protected $attributes = [
