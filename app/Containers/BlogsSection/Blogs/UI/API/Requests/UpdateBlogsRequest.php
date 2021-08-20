@@ -18,7 +18,7 @@ class UpdateBlogsRequest extends Request
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-        'id',
+        //'id',
     ];
 
     /**
@@ -26,7 +26,7 @@ class UpdateBlogsRequest extends Request
      * validation rules on them and allows accessing them like request data.
      */
     protected array $urlParameters = [
-        'id',
+       //'id',
     ];
 
     /**
@@ -35,7 +35,12 @@ class UpdateBlogsRequest extends Request
     public function rules(): array
     {
         return [
-            'id' => 'required'
+            'hotelName' => 'required|min:3',
+            'foodName' => 'required|min:3',
+            'description' => 'required|min:3',
+            'price' => 'required|min:3',
+            'rating' => 'required|min:3',
+            'place' => 'required|min:3'
         ];
     }
 

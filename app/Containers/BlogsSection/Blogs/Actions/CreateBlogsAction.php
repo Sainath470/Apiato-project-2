@@ -21,5 +21,6 @@ class CreateBlogsAction extends Action
             $request->place
         );
         return $data;
+        Log::info($data);
     }
 }

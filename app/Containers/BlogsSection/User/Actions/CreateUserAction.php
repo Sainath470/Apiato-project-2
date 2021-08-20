@@ -11,10 +11,13 @@ class CreateUserAction extends Action
 {
     public function run(Request $request): User
     {
-        $data = $request->sanitizeInput([
-            // add your request data here
-        ]);
+        $user = app(CreateUserTask::class)->run(
+            $request->firstName,
+            $request->lastName,
+            $request->email,
+            $request->password
+        );
 
-        return app(CreateUserTask::class)->run($data);
+        return $user;
     }
 }

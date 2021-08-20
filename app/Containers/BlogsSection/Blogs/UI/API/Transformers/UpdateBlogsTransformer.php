@@ -4,8 +4,9 @@ namespace App\Containers\BlogsSection\Blogs\UI\API\Transformers;
 
 use App\Containers\BlogsSection\Blogs\Models\Blogs;
 use App\Ship\Parents\Transformers\Transformer;
+use Log;
 
-class BlogsTransformer extends Transformer
+class UpdateBlogsTransformer extends Transformer
 {
     /**
      * @var  array
@@ -21,8 +22,9 @@ class BlogsTransformer extends Transformer
 
     ];
 
-    public function transform($blogs): array
+    public function transform(string $data): array
     {
+        Log::info([$data]);
         $response = [
             // 'object' => $blogs->getResourceKey(),
             // 'id' => $blogs->getHashedKey(),
@@ -30,7 +32,9 @@ class BlogsTransformer extends Transformer
             // 'updated_at' => $blogs->updated_at,
             // 'readable_created_at' => $blogs->created_at->diffForHumans(),
             // 'readable_updated_at' => $blogs->updated_at->diffForHumans(),
-            $blogs
+            'status' => 201,
+            'message' => "Blog updated succesfully",
+            'data' => $data
         ];
 
         // $response = $this->ifAdmin([

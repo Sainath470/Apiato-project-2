@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @apiGroup           Blogs
- * @apiName            getAllBlogs
+ * @apiGroup           User
+ * @apiName            loginUser
  *
- * @api                {GET} /v1/blogs Endpoint title here..
+ * @api                {POST} /v1/userlogin Endpoint title here..
  * @apiDescription     Endpoint description here..
  *
  * @apiVersion         1.0.0
@@ -19,10 +19,10 @@
 }
  */
 
-use App\Containers\BlogsSection\Blogs\UI\API\Controllers\Controller;
+use App\Containers\BlogsSection\User\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::get('getblogs', [Controller::class, 'getAllBlogs']);
-    // ->name('api_blogs_get_all_blogs')
+Route::post('userlogin', [Controller::class, 'loginUser']);
+    // ->name('api_user_login_user')
     // ->middleware(['auth:api']);
 

@@ -4,7 +4,7 @@ namespace App\Containers\BlogsSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-class CreateUserRequest extends Request
+class LoginUserRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
@@ -35,11 +35,8 @@ class CreateUserRequest extends Request
     public function rules(): array
     {
         return [
-            'firstName' => 'min:2|max:50',
-            'lastName' => 'min:2|max:50',
-            'email' => 'required|email|max:40|unique:admins',
-            'password' => 'required|required_with:password_confirmation|min:3',
-            'password_confirmation' => 'required|same:password'
+            'email' => 'required|email|max:40',
+            'password' => 'required|min:3'
         ];
     }
 

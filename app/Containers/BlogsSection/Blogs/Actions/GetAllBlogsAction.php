@@ -10,6 +10,6 @@ class GetAllBlogsAction extends Action
 {
     public function run(Request $request)
     {
-        return app(GetAllBlogsTask::class)->addRequestCriteria()->run();
+        return app(GetAllBlogsTask::class)->run();
     }
 }

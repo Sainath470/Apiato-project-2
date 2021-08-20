@@ -13,8 +13,10 @@ use App\Containers\BlogsSection\Blogs\Actions\FindBlogsByIdAction;
 use App\Containers\BlogsSection\Blogs\Actions\GetAllBlogsAction;
 use App\Containers\BlogsSection\Blogs\Actions\UpdateBlogsAction;
 use App\Containers\BlogsSection\Blogs\Actions\DeleteBlogsAction;
+use App\Containers\BlogsSection\Blogs\UI\API\Transformers\UpdateBlogsTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
+use Log;
 
 class Controller extends ApiController
 {
@@ -39,7 +41,7 @@ class Controller extends ApiController
     public function updateBlogs(UpdateBlogsRequest $request): array
     {
         $blogs = app(UpdateBlogsAction::class)->run($request);
-        return $this->transform($blogs, BlogsTransformer::class);
+        return $this->transform($blogs, UpdateBlogsTransformer::class);
     }
 
     public function deleteBlogs(DeleteBlogsRequest $request): JsonResponse

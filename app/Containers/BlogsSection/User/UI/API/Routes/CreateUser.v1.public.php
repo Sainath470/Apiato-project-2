@@ -22,7 +22,7 @@
 use App\Containers\BlogsSection\User\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::post('user', [Controller::class, 'createUser'])
-    ->name('api_user_create_user')
-    ->middleware(['auth:api']);
+Route::post('userregister', [Controller::class, 'createUser']);
+    // ->name('api_user_create_user')
+    // ->middleware(['auth:api']);
 

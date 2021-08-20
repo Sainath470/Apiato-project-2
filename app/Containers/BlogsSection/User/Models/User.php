@@ -3,11 +3,17 @@
 namespace App\Containers\BlogsSection\User\Models;
 
 use App\Ship\Parents\Models\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Model
+class User extends Model implements JWTSubject
 {
-    protected $fillable = [
+    protected $table = "user";
 
+    protected $fillable = [
+        'firstName',
+        'lastName',
+        'email',
+        'password'
     ];
 
     protected $attributes = [
@@ -31,4 +37,15 @@ class User extends Model
      * A resource key to be used in the serialized responses.
      */
     protected string $resourceKey = 'User';
+
+    
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

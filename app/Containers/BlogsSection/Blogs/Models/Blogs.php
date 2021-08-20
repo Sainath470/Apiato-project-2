@@ -10,7 +10,7 @@ class Blogs extends Model
     protected $table = "blogs";
 
     protected $fillable = [
-        'admin_id', 'hotelName','description','foodName', 'price','place','rating'
+     'admin_id', 'hotelName','foodName','description', 'price','rating','place'
     ];
 
     protected $attributes = [

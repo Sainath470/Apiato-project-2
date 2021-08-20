@@ -18,6 +18,7 @@ use App\Containers\BlogsSection\Admin\UI\API\Requests\LoginAdminRequest;
 use App\Containers\BlogsSection\Admin\UI\API\Transformers\LoginAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
+use Log;
 
 class Controller extends ApiController
 {
@@ -47,6 +48,7 @@ class Controller extends ApiController
 
     public function updateAdmin(UpdateAdminRequest $request): array
     {
+        Log::error([$request]);
         $admin = app(UpdateAdminAction::class)->run($request);
         return $this->transform($admin, AdminTransformer::class);
     }
