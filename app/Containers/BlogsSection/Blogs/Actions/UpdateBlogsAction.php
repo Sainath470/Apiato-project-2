@@ -11,7 +11,7 @@ use Log;
 
 class UpdateBlogsAction extends Action
 {
-    public function run(Request $request)
+    public function run(UpdateBlogsRequest $request)
     {
         $blog = app(UpdateBlogsTask::class)->run(
             $request->id,

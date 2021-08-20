@@ -41,6 +41,7 @@ class Controller extends ApiController
     public function updateBlogs(UpdateBlogsRequest $request): array
     {
         $blogs = app(UpdateBlogsAction::class)->run($request);
+        Log::info($blogs);
         return $this->transform($blogs, UpdateBlogsTransformer::class);
     }
 

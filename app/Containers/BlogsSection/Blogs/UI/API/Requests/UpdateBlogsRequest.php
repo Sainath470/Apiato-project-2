@@ -35,6 +35,7 @@ class UpdateBlogsRequest extends Request
     public function rules(): array
     {
         return [
+            'id' => 'required',
             'hotelName' => 'required|min:3',
             'foodName' => 'required|min:3',
             'description' => 'required|min:3',

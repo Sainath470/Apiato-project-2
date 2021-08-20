@@ -22,6 +22,6 @@
 use App\Containers\BlogsSection\Blogs\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::patch('updateblogs', [Controller::class, 'updateBlogs']);
+Route::post('updateblogs', [Controller::class, 'updateBlogs']);
 
 

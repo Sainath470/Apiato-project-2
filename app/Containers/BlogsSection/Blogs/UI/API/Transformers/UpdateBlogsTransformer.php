@@ -32,9 +32,7 @@ class UpdateBlogsTransformer extends Transformer
             // 'updated_at' => $blogs->updated_at,
             // 'readable_created_at' => $blogs->created_at->diffForHumans(),
             // 'readable_updated_at' => $blogs->updated_at->diffForHumans(),
-            'status' => 201,
-            'message' => "Blog updated succesfully",
-            'data' => $data
+            'message' => $data
         ];
 
         // $response = $this->ifAdmin([

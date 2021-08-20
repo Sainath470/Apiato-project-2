@@ -7,7 +7,6 @@ use App\Containers\BlogsSection\Blogs\Models\Blogs;
 use App\Ship\Parents\Tasks\Task;
 use JWTAuth;
 use Log;
-use PhpParser\Node\Expr;
 
 class UpdateBlogsTask extends Task
 {
@@ -26,19 +25,19 @@ class UpdateBlogsTask extends Task
 
         $adminPresent = Admin::where('id', $adminId)->value('id');
         $blogIdPresent = Blogs::where('id', $blogId)->value('id');
+        $blogsAdmin = Blogs::where('id', $blogId)->value('admin_id');
 
         if(!$adminPresent){
             $message = "Invalid credentials";
             return $message;
         }
-
         if(!$blogIdPresent){
             $message = "No blog is present with the given id";
             return $message;
         }
-   
-            return $this->repository->updateQuietly([
-                'id' => $blogId,
+
+        if($adminPresent == $blogsAdmin){   
+            $this->repository->where('id', $blogIdPresent)->update([
                 'admin_id' => $adminId,
                 'hotelName' => $hotelName,
                 'foodName' => $foodName,
@@ -47,6 +46,10 @@ class UpdateBlogsTask extends Task
                 'rating' => $rating,
                 'place' => $place
             ]);
+            return $message = "Blog updated successfully";
+        }
+        
+        return $message = "No blogs present for the admin";
             
     }
 }
