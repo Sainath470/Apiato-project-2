@@ -14,9 +14,12 @@ use App\Containers\BlogsSection\User\Actions\GetAllUsersAction;
 use App\Containers\BlogsSection\User\Actions\UpdateUserAction;
 use App\Containers\BlogsSection\User\Actions\DeleteUserAction;
 use App\Containers\BlogsSection\User\Actions\LoginUserAction;
+use App\Containers\BlogsSection\User\Actions\UserGetAllBlogsAction;
 use App\Containers\BlogsSection\User\Tasks\LoginUserTask;
 use App\Containers\BlogsSection\User\UI\API\Requests\LoginUserRequest;
+use App\Containers\BlogsSection\User\UI\API\Requests\UserGetAllBlogsRequest;
 use App\Containers\BlogsSection\User\UI\API\Transformers\LoginUserTransformer;
+use App\Containers\BlogsSection\User\UI\API\Transformers\UserGetAllBlogsTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
@@ -32,6 +35,12 @@ class Controller extends ApiController
     {
         $user = app(LoginUserAction::class)->run($request);
         return $this->created($this->transform($user, LoginUserTransformer::class));
+    }
+
+    public function getAllblogsForUser(UserGetAllBlogsRequest $request): array
+    {
+        $user = app(UserGetAllBlogsAction::class)->run($request);
+        return $this->transform($user, UserGetAllBlogsTransformer::class);
     }
 
     public function findUserById(FindUserByIdRequest $request): array
