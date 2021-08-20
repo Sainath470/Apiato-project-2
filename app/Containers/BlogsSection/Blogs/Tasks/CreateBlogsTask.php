@@ -2,14 +2,9 @@
 
 namespace App\Containers\BlogsSection\Blogs\Tasks;
 
-use App\Containers\BlogsSection\Blogs\Data\Repositories\BlogsRepository;
 use App\Containers\BlogsSection\Blogs\Models\Blogs;
-use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
-use Auth;
-use Exception;
 use JWTAuth;
-use Log;
 
 class CreateBlogsTask extends Task
 {
@@ -26,7 +21,7 @@ class CreateBlogsTask extends Task
         $details = JWTAuth::getPayload($token)->toArray();
         $id = $details["sub"];
               
-        return $this->repository->create([
+         $this->repository->create([
             'admin_id' => $id,
             'hotelName' => $hotelName,
             'foodName' => $foodName,
@@ -35,5 +30,7 @@ class CreateBlogsTask extends Task
             'rating' => $rating,
             'place' => $place
         ]);
+
+        return $message = "blog Created Successfully";
     }
 }
